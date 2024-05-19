@@ -1,6 +1,49 @@
+import java.sql.*;
+import java.util.List;
+
 //import java.util.*;
 public class Main {
     public static void main(String[] args) {
+
+        try{
+            //String url = "jdbc:mysql://127.9.0.1:3306/spacecartography";
+            Connection connection = DriverManager.getConnection(
+                    "jdbc:mysql://127.9.0.1:3306/spacecartography",
+                    "root",
+                    "barzoius");
+
+            PlanetDAO planetDAO = new PlanetDAO(connection);
+            PlanetService planetService = PlanetService.getInstance(planetDAO);
+
+            Planet vn = new Planet("Venus", 5.97, 12.2, false, new Coordinates(0,0,0));
+            planetService.createPlanet(vn);
+
+            Planet id1 = planetService.readPlanet(1);
+            System.out.println(id1);
+            Planet vn2 = new Planet("Venus2", 6.97, 22.2, false, new Coordinates(0,0,0));
+            planetService.updatePlanet(vn2, 2);
+
+            List<Planet> planete = planetService.getAllPlanets();
+
+            planetService.deletePlanet(2);
+
+            List<Planet> planete2 = planetService.getAllPlanets();
+
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM planet");
+
+            while(resultSet.next()){
+                System.out.println(resultSet.getString("Name"));
+                System.out.println(resultSet.getDouble("Diameter"));
+                System.out.println(resultSet.getDouble("GravPull"));
+                System.out.println(resultSet.getBoolean("PossLife"));
+            }
+
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+
 
         ServiceClass service = new ServiceClass();
 
@@ -34,7 +77,7 @@ public class Main {
         starSystem1.addPlanetSystem(planetSystem3);
 
 
-        Planet planet4 = new Planet("Voros", 131241, 33.2, true, new Coordinates(12.2, 32.3, 0.0));;
+        Planet planet4 = new Planet("Voros", 131241, 33.2, true, new Coordinates(12.2, 32.3, 0.0));
 
         PlanetSystem planetSystem4 = new PlanetSystem("Voros's system");
         planetSystem4.setPlanet(planet4);
