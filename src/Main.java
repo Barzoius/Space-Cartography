@@ -1,5 +1,9 @@
 import java.sql.*;
 import java.util.List;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.Instant;
+
 
 //import java.util.*;
 public class Main {
@@ -12,22 +16,38 @@ public class Main {
                     "root",
                     "barzoius");
 
-            PlanetDAO planetDAO = new PlanetDAO(connection);
-            PlanetService planetService = PlanetService.getInstance(planetDAO);
+//            PlanetDAO planetDAO = new PlanetDAO(connection);
+//            PlanetService planetService = PlanetService.getInstance(planetDAO);
+//
+//            Planet vn = new Planet("Venus", 5.97, 12.2, false, new Coordinates(0,0,0));
+//            planetService.createPlanet(vn);
+//
+//            Planet id1 = planetService.readPlanet(1);
+//            System.out.println(id1);
+//            Planet vn2 = new Planet("Venus2", 6.97, 22.2, false, new Coordinates(0,0,0));
+//            planetService.updatePlanet(vn2, 2);
+//
+//            List<Planet> planete = planetService.getAllPlanets();
+//
+//            planetService.deletePlanet(2);
+//
+//            List<Planet> planete2 = planetService.getAllPlanets();
 
-            Planet vn = new Planet("Venus", 5.97, 12.2, false, new Coordinates(0,0,0));
-            planetService.createPlanet(vn);
+            StarDAO starDAO = new StarDAO(connection);
+            StarService starService = StarService.getInstance(starDAO);
+            starService.readStar(3);
+            starService.deleteStar(4);
 
-            Planet id1 = planetService.readPlanet(1);
-            System.out.println(id1);
-            Planet vn2 = new Planet("Venus2", 6.97, 22.2, false, new Coordinates(0,0,0));
-            planetService.updatePlanet(vn2, 2);
+            AuditService auditService = AuditService.getInstance(connection);
+            auditService.exportActionsTableToCSV("src/actions.csv");
+//            Star st = new Star("SUN", 1322.23, 254.2, new Coordinates(0,0,0));
+//            starService.createStar(st);
+//            Star st2 = new Star("SUN2", 1322.23, 254.2, new Coordinates(0,0,0));
+//            starService.createStar(st2);
 
-            List<Planet> planete = planetService.getAllPlanets();
 
-            planetService.deletePlanet(2);
 
-            List<Planet> planete2 = planetService.getAllPlanets();
+            System.out.println(new java.sql.Timestamp(System.currentTimeMillis()));
 
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM planet");
