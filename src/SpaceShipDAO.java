@@ -1,8 +1,14 @@
+package Services;
+
+import Services.DAO;
+
+import Objects.SpaceShip;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SpaceShipDAO implements DAO<SpaceShip>{
+public class SpaceShipDAO implements DAO<SpaceShip> {
 
     private Connection connection;
 
@@ -26,7 +32,7 @@ public class SpaceShipDAO implements DAO<SpaceShip>{
     @Override
 
     public SpaceShip read(int id) throws SQLException {
-        String sql = "SELECT * FROM SpaceShip WHERE id = ?";
+        String sql = "SELECT * FROM Objects.SpaceShip WHERE id = ?";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();

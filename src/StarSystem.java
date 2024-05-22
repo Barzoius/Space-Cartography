@@ -1,3 +1,5 @@
+package Objects;
+
 import java.util.*;
 public class StarSystem {
     private String m_Name;
@@ -34,9 +36,9 @@ public class StarSystem {
     //Name:             validateCoordinates()                    |
     //Description:      Private function meant to validate       |
     //                  the coordinates of a planetsys relative  |
-    //                  to its Central Star. The function is     |
+    //                  to its Central Objects.Star. The function is     |
     //                  called before adding a PlanetSystem      |
-    //                  to the StarSystem.                       |
+    //                  to the Objects.StarSystem.                       |
     //----------------------------------------------------------//
     private boolean validateCoordinates(PlanetSystem planetSystem){
 
@@ -105,7 +107,7 @@ public class StarSystem {
         sb.append(String.format("//Name:      %-18s  \n", systemInfo));
         sb.append(String.format("//CenterStar:      %-18s  \n", m_CenterStar.getName()));
 
-        sb.append("//Planet Systems:\n");
+        sb.append("//Objects.Planet Systems:\n");
         for (PlanetSystem planetSystem : m_PlanetSystems) {
             sb.append(planetSystem.toString());
         }

@@ -1,9 +1,15 @@
+package Services;
+
+import Objects.Star;
+import Objects.Coordinates;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.CallableStatement;
 
-public class StarDAO implements DAO<Star>{
+
+public class StarDAO implements DAO<Star> {
 
     private Connection connection;
 
@@ -26,7 +32,7 @@ public class StarDAO implements DAO<Star>{
     @Override
 
     public Star read(int id) throws SQLException {
-        String sql = "SELECT * FROM Star WHERE id = ?;";
+        String sql = "SELECT * FROM Objects.Star WHERE id = ?;";
         //String select_action = "INSERT INTO actions (action_name) VALUES (?)";
         String callProcedureSql = "{CALL star_select();}";
 
@@ -44,7 +50,7 @@ public class StarDAO implements DAO<Star>{
                         new Coordinates(0,0,0));
             }
 
-//            pstmtInsert.setString(1, "SELECT on Star");
+//            pstmtInsert.setString(1, "SELECT on Objects.Star");
 //            pstmtInsert.executeUpdate();
             callStmt.execute();
 
@@ -59,7 +65,7 @@ public class StarDAO implements DAO<Star>{
 
     @Override
     public void update(Star star, int id) throws SQLException {
-        String sql = "UPDATE Star SET name = ?, diameter = ?, gravpull = ? WHERE id = ?";
+        String sql = "UPDATE Objects.Star SET name = ?, diameter = ?, gravpull = ? WHERE id = ?";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, star.getName());
             pstmt.setDouble(2, star.getDiameter());
@@ -71,7 +77,7 @@ public class StarDAO implements DAO<Star>{
 
     @Override
     public void delete(int id) throws SQLException {
-        String sql = "DELETE FROM Star WHERE id = ?";
+        String sql = "DELETE FROM Objects.Star WHERE id = ?";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setInt(1, id);
             pstmt.executeUpdate();
@@ -81,7 +87,7 @@ public class StarDAO implements DAO<Star>{
     @Override
     public List<Star> getAll() throws SQLException {
         List<Star> stars = new ArrayList<>();
-        String sql = "SELECT * FROM Star";
+        String sql = "SELECT * FROM Objects.Star";
         try (Statement stmt = connection.createStatement()) {
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {

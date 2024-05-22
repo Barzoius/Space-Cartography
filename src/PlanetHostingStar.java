@@ -1,3 +1,7 @@
+package Objects;
+
+import Objects.Coordinates;
+
 public class PlanetHostingStar extends Star {
     public PlanetHostingStar(String name, double diameter, double gravPull, Coordinates coords)
     {

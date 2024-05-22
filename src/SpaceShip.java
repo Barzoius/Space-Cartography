@@ -1,3 +1,7 @@
+package Objects;
+
+import Objects.Coordinates;
+
 import java.time.Duration;
 import java.time.Instant;
 
@@ -17,7 +21,7 @@ public class SpaceShip {
 
     private double m_distance;
 
-    SpaceShip(String name, double speed, double dirAngle)
+    public SpaceShip(String name, double speed, double dirAngle)
     {
         this.m_Name = name;
         this.m_speed = speed;
@@ -105,7 +109,7 @@ public class SpaceShip {
         sb.append(String.format("//Name:        %-16s  \n", m_Name));
         sb.append(String.format("//Speed:    %-16s  \n", m_speed));
         sb.append(String.format("//DirAngle:    %-16s  \n", m_dirAngle));
-        sb.append(String.format("//Coordinates: %-14s   \n", m_Coords.toString()));
+        sb.append(String.format("//Objects.Coordinates: %-14s   \n", m_Coords.toString()));
         if(m_destinationCoords != null) {
             sb.append(String.format("//DestCoords: %-14s   \n", m_destinationCoords.toString()));
         }
