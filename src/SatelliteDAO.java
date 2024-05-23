@@ -1,9 +1,3 @@
-package Services;
-
-import Services.DAO;
-import Objects.Satellite;
-import Objects.Coordinates;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +12,7 @@ public class SatelliteDAO implements DAO<Satellite> {
 
     @Override
     public void create(Satellite satellite) throws SQLException {
-        String sql = "INSERT INTO Objects.Satellite" + "(Name, Diameter, Gravpull) VALUES" + "(?, ?, ?);";
+        String sql = "INSERT INTO Satellite" + "(Name, Diameter, Gravpull) VALUES" + "(?, ?, ?);";
 
         try(PreparedStatement preparedStatement = connection.prepareStatement(sql)){
             preparedStatement.setString(1, satellite.getName());
@@ -30,7 +24,7 @@ public class SatelliteDAO implements DAO<Satellite> {
 
     @Override
     public Satellite read(int id) throws SQLException {
-        String sql = "SELECT * FROM Objects.Satellite WHERE id = ?";
+        String sql = "SELECT * FROM Satellite WHERE id = ?";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
@@ -47,7 +41,7 @@ public class SatelliteDAO implements DAO<Satellite> {
 
     @Override
     public void update(Satellite satellite, int id) throws SQLException {
-        String sql = "UPDATE Objects.Satellite SET name = ?, diameter = ?, gravpull = ? WHERE id = ?";
+        String sql = "UPDATE Satellite SET name = ?, diameter = ?, gravpull = ? WHERE id = ?";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, satellite.getName());
             pstmt.setDouble(2, satellite.getDiameter());
@@ -59,7 +53,7 @@ public class SatelliteDAO implements DAO<Satellite> {
 
     @Override
     public void delete(int id) throws SQLException {
-        String sql = "DELETE FROM Objects.Satellite WHERE id = ?";
+        String sql = "DELETE FROM Satellite WHERE id = ?";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setInt(1, id);
             pstmt.executeUpdate();
@@ -69,7 +63,7 @@ public class SatelliteDAO implements DAO<Satellite> {
     @Override
     public List<Satellite> getAll() throws SQLException {
         List<Satellite> satellites = new ArrayList<>();
-        String sql = "SELECT * FROM Objects.Satellite";
+        String sql = "SELECT * FROM Satellite";
         try (Statement stmt = connection.createStatement()) {
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {

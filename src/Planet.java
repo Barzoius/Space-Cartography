@@ -1,5 +1,3 @@
-package Objects;
-
 public class Planet {
     private String m_Name;
     private double m_Diameter; // in km
@@ -79,7 +77,7 @@ public class Planet {
         sb.append(String.format("//Diameter:    %-16s  \n", m_Diameter));
         sb.append(String.format("//GravPull:    %-16s  \n", m_GravitationalPull));
         sb.append(String.format("//PosLife:     %-16s  \n", m_PossibleLife));
-        sb.append(String.format("//Objects.Coordinates: %-14s   \n", m_Coords.toString()));
+        sb.append(String.format("//Coordinates: %-14s   \n", m_Coords.toString()));
         sb.append("//------------------------------//");
         return sb.toString();
     }

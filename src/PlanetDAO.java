@@ -1,8 +1,3 @@
-package Services;
-import Objects.Planet;
-import Objects.Coordinates;
-
-import Services.DAO;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +24,7 @@ public class PlanetDAO implements DAO<Planet> {
 
     @Override
     public Planet read(int id) throws SQLException {
-        String sql = "SELECT * FROM Objects.Planet WHERE id = ?";
+        String sql = "SELECT * FROM Planet WHERE id = ?";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
@@ -47,7 +42,7 @@ public class PlanetDAO implements DAO<Planet> {
 
     @Override
     public void update(Planet planet, int id) throws SQLException {
-        String sql = "UPDATE Objects.Planet SET name = ?, diameter = ?, gravpull = ?, posslife = ? WHERE id = ?";
+        String sql = "UPDATE Planet SET name = ?, diameter = ?, gravpull = ?, posslife = ? WHERE id = ?";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setString(1, planet.getName());
             pstmt.setDouble(2, planet.getDiameter());
@@ -60,7 +55,7 @@ public class PlanetDAO implements DAO<Planet> {
 
     @Override
     public void delete(int id) throws SQLException {
-        String sql = "DELETE FROM Objects.Planet WHERE id = ?";
+        String sql = "DELETE FROM Planet WHERE id = ?";
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
             pstmt.setInt(1, id);
             pstmt.executeUpdate();
@@ -70,7 +65,7 @@ public class PlanetDAO implements DAO<Planet> {
     @Override
     public List<Planet> getAll() throws SQLException {
         List<Planet> planets = new ArrayList<>();
-        String sql = "SELECT * FROM Objects.Planet";
+        String sql = "SELECT * FROM Planet";
         try (Statement stmt = connection.createStatement()) {
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {

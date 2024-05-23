@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.Instant;
 
-
 //import java.util.*;
 public class Main {
     public static void main(String[] args) {
@@ -35,16 +34,19 @@ public class Main {
 
             StarDAO starDAO = new StarDAO(connection);
             StarService starService = StarService.getInstance(starDAO);
+            System.out.println("DDADADAADAD:");
             starService.readStar(3);
-            starService.deleteStar(4);
-
-            AuditService auditService = AuditService.getInstance(connection);
-            auditService.exportActionsTableToCSV("src/actions.csv");
 //            Star st = new Star("SUN", 1322.23, 254.2, new Coordinates(0,0,0));
 //            starService.createStar(st);
 //            Star st2 = new Star("SUN2", 1322.23, 254.2, new Coordinates(0,0,0));
 //            starService.createStar(st2);
-
+//            LocalDateTime currentDateTime = LocalDateTime.now();
+//            Instant instant = Instant.now() ;
+//            System.out.println(instant);
+//
+//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+//
+//            String formattedDateTime = currentDateTime.format(formatter);
 
 
             System.out.println(new java.sql.Timestamp(System.currentTimeMillis()));

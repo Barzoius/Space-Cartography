@@ -1,6 +1,4 @@
-package Objects;
-
-import Objects.Coordinates;
+import java.util.Objects;
 
 public class Satellite {
     private String m_Name;
@@ -48,6 +46,25 @@ public class Satellite {
         this.m_Coords = coords;
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+
+        if (o == null || this.getClass() != o.getClass())
+            return false;
+
+        Satellite satellite = (Satellite) o;
+
+        return Objects.equals(this.m_Name, satellite.m_Name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.m_Name);
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -56,7 +73,7 @@ public class Satellite {
         sb.append(String.format("//Name:        %-16s  \n", m_Name));
         sb.append(String.format("//Diameter:    %-16s  \n", m_Diameter));
         sb.append(String.format("//GravPull:    %-16s  \n", m_GravitationalPull));
-        //sb.append(String.format("//Objects.Coordinates: %-14s   |\n", m_Coords.toString()));
+        //sb.append(String.format("//Coordinates: %-14s   |\n", m_Coords.toString()));
         sb.append("//------------------------------//");
         return sb.toString();
     }

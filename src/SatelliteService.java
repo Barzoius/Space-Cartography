@@ -1,7 +1,3 @@
-package Services;
-
-import Objects.Satellite;
-
 import java.sql.SQLException;
 import java.util.List;
 

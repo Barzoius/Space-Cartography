@@ -1,4 +1,7 @@
-import java.util.*;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
 public class PlanetSystem {
 
     private String m_Name;

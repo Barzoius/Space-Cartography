@@ -1,5 +1,3 @@
-package Objects;
-
 public class Star {
 
     private String m_Name;
@@ -73,7 +71,7 @@ public class Star {
         sb.append(String.format("//Name:        %-16s  \n", m_Name));
         sb.append(String.format("//Diameter:    %-16s  \n", m_Diameter));
         sb.append(String.format("//GravPull:    %-16s  \n", m_GravitationalPull));
-        sb.append(String.format("//Objects.Coordinates: %-14s   \n", m_Coords.toString()));
+        sb.append(String.format("//Coordinates: %-14s   \n", m_Coords.toString()));
         sb.append("//------------------------------//");
         return sb.toString();
     }

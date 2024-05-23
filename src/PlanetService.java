@@ -1,7 +1,3 @@
-package Services;
-
-import Objects.Planet;
-
 import java.sql.SQLException;
 import java.util.List;
 
