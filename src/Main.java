@@ -1,8 +1,7 @@
+import Objects.*;
+import Services.*;
+
 import java.sql.*;
-import java.util.List;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.Instant;
 
 //import java.util.*;
 public class Main {
@@ -15,8 +14,52 @@ public class Main {
                     "root",
                     "barzoius");
 
-//            PlanetDAO planetDAO = new PlanetDAO(connection);
-//            PlanetService planetService = PlanetService.getInstance(planetDAO);
+            //---TestBD Planet---//
+            PlanetDAO planetDAO = new PlanetDAO(connection);
+            PlanetService planetService = PlanetService.getInstance(planetDAO);
+
+            Planet planet1 = new Planet("URANUS", 5.97, 12.2, false, new Coordinates(0,0,0));
+            planetService.createPlanet(planet1);
+            planetService.updatePlanet(planet1, 1);
+            System.out.println(planetService.readPlanet(1));
+//            planetService.deletePlanet(4);
+
+
+            //---TestBD Star---//
+            StarDAO starDAO = new StarDAO(connection);
+            StarService starService = StarService.getInstance(starDAO);
+
+            Star star1 = new Star("STELUTA", 5.97, 12.2, new Coordinates(0,0,0));
+            starService.createStar(star1);
+            starService.updateStar(star1, 1);
+            System.out.println(starService.readStar(1));
+//            starService.deleteStar(5);
+
+
+            //---TestBD Satellite---//
+            SatelliteDAO satelliteDAO = new SatelliteDAO(connection);
+            SatelliteService satelliteService = SatelliteService.getInstance(satelliteDAO);
+            Satellite satellite1 = new Satellite("PLU", 5.97, 12.2, new Coordinates(0,0,0));
+            satelliteService.createSatellite(satellite1);
+            satelliteService.updateSatellite(satellite1, 1);
+            System.out.println(satelliteService.readSatellite(1));
+//            satelliteService.deleteSatellite(2);
+
+            //---TestBD SpaceShip---//
+            SpaceShipDAO spaceShipDAO = new SpaceShipDAO(connection);
+            SpaceShipService spaceShipService = SpaceShipService.getInstance(spaceShipDAO);
+
+            SpaceShip spaceShip1 = new SpaceShip("SUBMARIN", 5.97, 12.2);
+            spaceShipService.createSpaceShip(spaceShip1);
+            spaceShipService.updateSpaceShip(spaceShip1, 1);
+            System.out.println(spaceShipService.readSpaceShip(1));
+            //spaceShipService.deleteSpaceShip(2);
+
+
+            //---Audit---//
+            AuditService auditService = AuditService.getInstance(connection);
+            auditService.exportActionsTableToCSV("src/actions.csv");
+
 //
 //            Planet vn = new Planet("Venus", 5.97, 12.2, false, new Coordinates(0,0,0));
 //            planetService.createPlanet(vn);
@@ -32,10 +75,12 @@ public class Main {
 //
 //            List<Planet> planete2 = planetService.getAllPlanets();
 
-            StarDAO starDAO = new StarDAO(connection);
-            StarService starService = StarService.getInstance(starDAO);
+
             System.out.println("DDADADAADAD:");
-            starService.readStar(3);
+            System.out.println(starService.readStar(3));
+            System.out.println(planetService.readPlanet(1));
+            System.out.println(starService.readStar(3));
+            System.out.println(starService.readStar(3));
 //            Star st = new Star("SUN", 1322.23, 254.2, new Coordinates(0,0,0));
 //            starService.createStar(st);
 //            Star st2 = new Star("SUN2", 1322.23, 254.2, new Coordinates(0,0,0));
@@ -67,7 +112,7 @@ public class Main {
 
 
 
-        ServiceClass service = new ServiceClass();
+        ObejectsServiceClass service = new ObejectsServiceClass();
 
         Planet planet1 = new Planet("Earth", 31241, 13.2, true, new Coordinates(12.2, 32.3, 0.0));
         Planet planet2 = new Planet("Mars", 52241, 6.2, false, new Coordinates(24.2, 21.3, 0.0));

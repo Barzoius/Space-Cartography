@@ -19,7 +19,7 @@ SpaceCartography is an object-oriented programming (OOP) project designed to sim
 | PlanetSystem | Class representing the system formed by a central Planet object and the Satellite objects that orbit them.|
 | StarSystem | Class representing the system formed by a central Star object and the PlanetSystem objects that orbit them.|
 | SpaceShip | Class representing a moving spacial vehicle which direction, destination and speed can be altered by the user thorough functions.|
-| ServiceClass | Class used to hold and access most functions as well as creating collections for objects.|
+| ObejectsServiceClass | Class used to hold and access most functions as well as creating collections for objects.|
 | MenuClass | Singleton Class used to create a terminal menu for minimal better experice. |
 | Main | Class representing the native Java entry-point. |
 
@@ -45,7 +45,7 @@ There are, as well, more general functionalities for most objects such as:
 <hr>
 
 ### ___Unfinished:__
-- The computeDistance() function of the ServiceClass:
+- The computeDistance() function of the ObejectsServiceClass:
 ```java
 public double computeDistance(Object obj1, Object obj2)
     {

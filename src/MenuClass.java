@@ -1,13 +1,16 @@
+import Objects.*;
+import Services.ObejectsServiceClass;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 public class MenuClass {
     private static MenuClass instance = null;
     private Scanner scanner;
-    private ServiceClass service;
+    private ObejectsServiceClass service;
 
     private MenuClass() {
         scanner = new Scanner(System.in);
-        service = new ServiceClass();
+        service = new ObejectsServiceClass();
     }
 
     public static MenuClass getInstance() {
